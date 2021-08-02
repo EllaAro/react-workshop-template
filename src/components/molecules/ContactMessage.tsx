@@ -4,56 +4,37 @@ import {Button} from '../atoms';
 import {InputGroup} from './InputGroup';
 
 export function ContactMessage() {
-  const [message, setMessage] = useState(DEFAULT_MESSAGE);
+  /*
+  AFTER ADDING THE MESSAGE DIV :
+  use the useState hook for updating the message on change. the useState hook re-renders the component once the defined
+  state is changed
+  */
 
-  const {contactNumber, setContactNumber} = useContactNumber();
+  /*
+  use the  useContactNumber hook for the Context
+  */
 
-  const handleMessageChange = (event: SyntheticEvent<HTMLTextAreaElement>) => {
-    setMessage(event.currentTarget.value);
-  };
+  /*
+  AFTER using the useState hook :
+  create handleMessageChange function and use setMessage in order to set the new message content
+  */
 
-  const whatsappHref = `${WHATSAPP_API_SEND_IL_NUMBER}${contactNumber.prefix}${
-    contactNumber.number
-  }?text=${encodeURI(message ?? '')}`;
+  /*
+  AFTER importing useContactNumber :
+  copy the whatsappHref const from the reference
+  */
 
-  const onChangePrefix = useCallback(
-    (value: string) => {
-      setContactNumber(prevState => ({
-        ...prevState,
-        prefix: value,
-      }));
-    },
-    [setContactNumber],
-  );
 
-  const onChangeNumber = useCallback(
-    (value: string) => {
-      setContactNumber(prevState => ({
-        ...prevState,
-        number: value,
-      }));
-    },
-    [setContactNumber],
-  );
+
+  /* AFTER importing useContactNumber :
+  create two functions onChangePrefix and onChangeNumber in order to set the new number and perfix
+  */
 
   return (
     <form action="#" className="sm:mx-auto sm:max-w-lg sm:flex flex-col gap-2">
       <div className="flex gap-2">
-        <InputGroup
-          prefixProps={{
-            value: contactNumber.prefix,
-            onChange: onChangePrefix,
-            placeholder: `054`,
-            maxLength: 3,
-          }}
-          value={contactNumber.number}
-          onChange={onChangeNumber}
-          placeholder="5554123"
-          maxLength={7}
-        />
-        <Button type="link" size="lg" href={whatsappHref} target="_blank">
-          Send
-        </Button>
+        <div>ADD THE InputGroup COMPONENT INSTEAD OF THIS DIV</div>
+        <div>ADD THE Button COMPONENT INSTEAD OF THIS DIV</div>
       </div>
       <div className="border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-green-600 focus-within:border-green-600 bg-white">
         <label
@@ -63,10 +44,10 @@ export function ContactMessage() {
         </label>
         <textarea
           rows={5}
-          name="message"
-          id="message"
-          value={message}
-          onChange={handleMessageChange}
+          name="TODO"
+          id="TODO"
+          value="TODO"
+          onChange={() => 'TODO'}
           className="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm outline-none"
           placeholder="Insert your message"
         />

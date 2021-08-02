@@ -14,6 +14,7 @@ type InputProps = {
   name?: string;
   maxLength?: number;
 };
+//TODO 1. define the type InputProps
 
 export const Input = ({
   className = ``,
@@ -23,7 +24,11 @@ export const Input = ({
   maxLength = Infinity,
   ...props
 }: InputProps): React.ReactElement => {
+  //TODO 2. define what props the Input component recieves
   const [inputValue, setInputValue] = useState(value);
+  //TODO 3. create state and use it for...?
+
+  //4.Create an onChange function for the input
   const $onChange = useCallback(
     ({currentTarget: {value}}) => {
       if (value.length <= maxLength) {
@@ -33,14 +38,17 @@ export const Input = ({
     [maxLength],
   );
 
+  //TODO 5. Add one useEffect for whenever inner inputValue is changed and use the created onChange for it.
   useEffect(() => {
     onChange(inputValue);
   }, [onChange, inputValue]);
 
+  //TODO 6. Add second useEffect for ???????
   useEffect(() => {
     setInputValue(value);
   }, [value]);
 
+  //TODO 7. Use the props for the <input> element with the right parameters (our props,className,ref,onChange,value)
   return (
     <input
       {...{...props}}

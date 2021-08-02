@@ -14,6 +14,8 @@ type ButtonProps = DefaultComponent & {
   target?: `_blank`;
 };
 
+//TODO define the type ButtonProps
+
 const BUTTON_SIZE: {[key in ButtonSize]: string} = {
   lg: `text-base sm:px-10 py-3`,
   md: `text-base px-4 py-2`,
@@ -28,6 +30,7 @@ const BUTTON_COLOR: {[key in ButtonUse]: string} = {
 };
 
 export const Button = (props: ButtonProps): ReactElement => {
+  //TODO write the props the Button component recieves
   const {
     className = ``,
     children,
@@ -44,6 +47,14 @@ export const Button = (props: ButtonProps): ReactElement => {
     BUTTON_COLOR[use],
     className,
   );
+
+  /*
+  TODO for the ContactMessageLayout create an <a> element and use the props in order to create the Button component
+
+  FOLLOW NEXT STEP AFTER YOU'RE DONE WITH THE ContactMessage COMPONENT ! ! !
+  for the ContactTable use a <button> element and conditonally render either of the options based on the given prop
+
+  */
   return type === 'button' || type === 'submit' ? (
     <button {...{type, target, onClick}} className={$className}>
       {children}
